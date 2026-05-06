@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>난개발·환경오염 방지 및 주민알권리 조례 운동본부</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green-dark: #1a3a2a;
+      --green-mid: #2d6a4f;
+      --green-light: #f0f7f4;
+      --green-accent: #a8d5b0;
+      --amber: #e9c46a;
+      --amber-light: #fff8f0;
+      --amber-border: #e8c97a;
+      --text-primary: #1a1a1a;
+      --text-secondary: #555;
+      --text-tertiary: #888;
+      --bg: #ffffff;
+      --bg-secondary: #f6f6f4;
+      --border: rgba(0,0,0,0.1);
+      --border-hover: rgba(0,0,0,0.2);
+      --radius-md: 8px;
+      --radius-lg: 12px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --text-primary: #f0ede8;
+        --text-secondary: #aaa;
+        --text-tertiary: #777;
+        --bg: #181818;
+        --bg-secondary: #222;
+        --border: rgba(255,255,255,0.1);
+        --border-hover: rgba(255,255,255,0.22);
+        --green-light: rgba(45,106,79,0.12);
+        --amber-light: rgba(233,196,106,0.07);
+        --amber-border: rgba(233,196,106,0.22);
+      }
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      background: var(--bg);
+      color: var(--text-primary);
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--green-dark);
+      color: white;
+      padding: 4rem 0 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -80px;
+      width: 360px; height: 360px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.07);
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -100px; left: -60px;
+      width: 260px; height: 260px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.05);
+      pointer-events: none;
+    }
+    .hero-inner { position: relative; z-index: 1; }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.12);
+      color: var(--green-accent);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 1.25rem;
+      border: 0.5px solid rgba(255,255,255,0.15);
+    }
+    .hero h1 {
+      font-family: 'Nanum Myeongjo', serif;
+      font-size: clamp(20px, 5vw, 26px);
+      font-weight: 700;
+      line-height: 1.5;
+      margin-bottom: 1rem;
+      color: white;
+    }
+    .hero-sub {
+      font-size: 14px;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.8;
+      margin-bottom: 2rem;
+      max-width: 520px;
+    }
+    .hero-stats {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .hero-stat .num {
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--green-accent);
+      display: block;
+      line-height: 1;
+    }
+    .hero-stat .lbl {
+      font-size: 11px;
+      color: rgba(255,255,255,0.5);
+      margin-top: 4px;
+      display: block;
+    }
+
+    /* ── SECTIONS ── */
+    .section {
+      padding: 2.5rem 0;
+      border-bottom: 0.5px solid var(--border);
+    }
+    .section:last-child { border-bottom: none; }
+
+    .section-label {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      color: var(--green-mid);
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+    .section-title {
+      font-family: 'Nanum Myeongjo', serif;
+      font-size: clamp(18px, 4vw, 22px);
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+      line-height: 1.45;
+    }
+
+    /* ── PROBLEM CARDS ── */
+    .problem-card {
+      background: var(--amber-light);
+      border: 0.5px solid var(--amber-border);
+      border-radius: var(--radius-lg);
+      padding: 1.125rem 1.25rem;
+      margin-bottom: 0.875rem;
+    }
+    .problem-card-head {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 0.5rem;
+    }
+    .problem-icon {
+      width: 30px; height: 30px;
+      background: var(--amber);
+      border-radius: 7px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 15px;
+      flex-shrink: 0;
+    }
+    .problem-card h3 { font-size: 14px; font-weight: 500; }
+    .problem-card p { font-size: 13px; color: var(--text-secondary); line-height: 1.75; }
+
+    /* ── ORDINANCE CARDS ── */
+    .ordinance-grid { display: flex; flex-direction: column; gap: 0.75rem; }
+
+    .ord-card {
+      background: var(--bg);
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      cursor: pointer;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .ord-card:hover { border-color: var(--border-hover); }
+    .ord-card.expanded .ord-body { display: block; }
+    .ord-card.expanded .ord-arrow { transform: rotate(180deg); }
+
+    .ord-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 1rem 1.125rem;
+      user-select: none;
+    }
+    .ord-num {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      font-size: 12px; font-weight: 500;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .ord-header-text { flex: 1; }
+    .ord-scope { font-size: 10px; font-weight: 500; letter-spacing: 0.06em; margin-bottom: 3px; }
+    .ord-title { font-size: 14px; font-weight: 500; }
+    .ord-arrow {
+      font-size: 18px;
+      color: var(--text-tertiary);
+      transition: transform 0.2s;
+      flex-shrink: 0;
+      line-height: 1;
+    }
+
+    .ord-body {
+      display: none;
+      padding: 0 1.125rem 1.25rem;
+      border-top: 0.5px solid var(--border);
+    }
+    .ord-body-inner {
+      padding-top: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.875rem;
+    }
+
+    .ord-situation {
+      background: var(--amber-light);
+      border-left: 3px solid var(--amber);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      padding: 0.875rem 1rem;
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+    .ord-situation strong { color: var(--text-primary); font-weight: 500; }
+
+    .ord-solution {
+      background: var(--green-light);
+      border-radius: var(--radius-md);
+      padding: 0.875rem 1rem;
+    }
+    .ord-solution-title {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--green-mid);
+      margin-bottom: 0.6rem;
+      letter-spacing: 0.04em;
+    }
+    .ord-solution-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      margin-bottom: 6px;
+      font-size: 13px;
+      color: var(--text-primary);
+      line-height: 1.7;
+    }
+    .ord-solution-item::before {
+      content: '✓';
+      font-size: 11px;
+      color: var(--green-mid);
+      margin-top: 3px;
+      flex-shrink: 0;
+      font-weight: 500;
+    }
+    .ord-solution-item:last-child { margin-bottom: 0; }
+
+    .ord-effect {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      background: var(--bg-secondary);
+      border-radius: var(--radius-md);
+      padding: 0.875rem 1rem;
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.75;
+    }
+    .ord-effect-icon {
+      color: var(--green-mid);
+      font-size: 16px;
+      margin-top: 1px;
+      flex-shrink: 0;
+    }
+
+    /* scope colors */
+    .c-basic .ord-num { background: #dbeafe; color: #1e40af; }
+    .c-basic .ord-scope { color: #2563eb; }
+    @media (prefers-color-scheme: dark) {
+      .c-basic .ord-num { background: rgba(59,130,246,0.15); color: #93c5fd; }
+      .c-basic .ord-scope { color: #93c5fd; }
+    }
+    .c-wide .ord-num { background: #dcfce7; color: #15803d; }
+    .c-wide .ord-scope { color: #16a34a; }
+    @media (prefers-color-scheme: dark) {
+      .c-wide .ord-num { background: rgba(34,197,94,0.12); color: #86efac; }
+      .c-wide .ord-scope { color: #86efac; }
+    }
+    .c-share .ord-num { background: #fef3c7; color: #92400e; }
+    .c-share .ord-scope { color: #b45309; }
+    @media (prefers-color-scheme: dark) {
+      .c-share .ord-num { background: rgba(245,158,11,0.12); color: #fcd34d; }
+      .c-share .ord-scope { color: #fcd34d; }
+    }
+
+    /* ── TIMELINE ── */
+    .timeline { position: relative; padding-left: 1.75rem; }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 6px; top: 10px; bottom: 10px;
+      width: 1px;
+      background: var(--border);
+    }
+    .tl-item { position: relative; margin-bottom: 1.5rem; }
+    .tl-item:last-child { margin-bottom: 0; }
+    .tl-dot {
+      position: absolute;
+      left: -1.75rem;
+      top: 5px;
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      background: var(--bg);
+      border: 2px solid var(--green-mid);
+    }
+    .tl-dot.done { background: var(--green-mid); }
+    .tl-date { font-size: 11px; font-weight: 500; color: var(--green-mid); margin-bottom: 3px; }
+    .tl-text { font-size: 13.5px; color: var(--text-primary); line-height: 1.6; }
+    .tl-region { font-size: 11.5px; color: var(--text-tertiary); margin-top: 3px; }
+
+    /* ── ORG ── */
+    .org-box {
+      background: var(--green-light);
+      border-radius: var(--radius-lg);
+      padding: 1.25rem 1.5rem;
+      margin-top: 1rem;
+    }
+    .org-role {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--green-mid);
+      margin-bottom: 6px;
+      letter-spacing: 0.05em;
+    }
+    .org-names { font-size: 13.5px; line-height: 1.85; }
+
+    .members-label {
+      font-size: 12.5px;
+      color: var(--text-secondary);
+      margin: 1.25rem 0 0.625rem;
+    }
+    .tag-cloud { display: flex; flex-wrap: wrap; gap: 6px; }
+    .tag {
+      background: var(--bg-secondary);
+      border: 0.5px solid var(--border);
+      border-radius: 20px;
+      padding: 4px 11px;
+      font-size: 11.5px;
+      color: var(--text-secondary);
+    }
+
+    /* ── CTA ── */
+    .cta-box {
+      background: var(--green-dark);
+      border-radius: var(--radius-lg);
+      padding: 2rem 1.5rem;
+      margin-top: 1.25rem;
+      text-align: center;
+    }
+    .cta-box h3 {
+      font-family: 'Nanum Myeongjo', serif;
+      font-size: 18px;
+      color: white;
+      margin-bottom: 0.625rem;
+    }
+    .cta-box p {
+      font-size: 13px;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 1.25rem;
+      line-height: 1.8;
+    }
+    .cta-contacts { display: flex; flex-direction: column; gap: 0.625rem; }
+    .cta-contact {
+      background: rgba(255,255,255,0.08);
+      border: 0.5px solid rgba(255,255,255,0.12);
+      border-radius: var(--radius-md);
+      padding: 0.75rem 1rem;
+      font-size: 13px;
+      color: rgba(255,255,255,0.8);
+      text-align: left;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .cta-contact-icon { color: var(--green-accent); margin-top: 1px; flex-shrink: 0; }
+    .cta-contact strong { color: white; font-weight: 500; }
+    .cta-contact span { color: rgba(255,255,255,0.55); font-size: 12px; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #111;
+      color: rgba(255,255,255,0.35);
+      text-align: center;
+      font-size: 11.5px;
+      padding: 1.5rem;
+      line-height: 1.8;
+    }
+  </style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="container hero-inner">
+    <div class="hero-badge">2026 지방선거 정책 캠페인</div>
+    <h1>난개발·환경오염 방지 및<br>주민알권리 조례 운동본부</h1>
+    <p class="hero-sub">농촌을 도시의 쓰레기장으로 만드는 '깜깜이 개발'에 맞서,<br>지역 주민의 알권리와 참여권을 조례로 보장합니다.</p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <span class="num">80+</span>
+        <span class="lbl">참여단체</span>
+      </div>
+      <div class="hero-stat">
+        <span class="num">7</span>
+        <span class="lbl">핵심 조례안</span>
+      </div>
+      <div class="hero-stat">
+        <span class="num" id="dday">...</span>
+        <span class="lbl" id="dday-label">지방선거까지</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- 왜 필요한가 -->
+  <section class="section">
+    <div class="container">
+      <div class="section-label">왜 필요한가</div>
+      <div class="section-title">우리 동네에 무슨 일이<br>벌어지고 있는지 모른다</div>
+      <div class="problem-card">
+        <div class="problem-card-head">
+          <div class="problem-icon">🏭</div>
+          <h3>몰래 들어오는 폐기물 시설</h3>
+        </div>
+        <p>대도시 산업폐기물이 경기·충북·전북·경남 농촌 면 단위로 흘러갑니다. 매립장·소각장이 들어서도 주민에게 미리 알리지 않습니다.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-card-head">
+          <div class="problem-icon">🔒</div>
+          <h3>밀실에서 진행되는 인허가</h3>
+        </div>
+        <p>위원회 회의와 회의록이 비공개. 공사가 시작된 후에야 주민이 알게 됩니다. 대책위를 꾸려도 되돌리기엔 너무 늦습니다.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-card-head">
+          <div class="problem-icon">⚖️</div>
+          <h3>피해 입증도 주민 몫</h3>
+        </div>
+        <p>청주 소각장, 익산 비료공장, 김포 주물공장 인근에서 집단 암 발생. 그러나 환경 피해 입증 책임은 고스란히 주민에게 있습니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7대 조례 -->
+  <section class="section">
+    <div class="container">
+      <div class="section-label">7대 핵심 조례</div>
+      <div class="section-title">주민의 알권리와 참여를<br>보장하는 조례가 필요합니다!</div>
+      <p style="font-size:13.5px; color:var(--text-secondary); margin-bottom:1.25rem;">항목을 눌러 각 조례의 내용을 확인하세요.</p>
+
+      <div class="ordinance-grid">
+
+        <div class="ord-card c-basic" onclick="toggle(this)">
+          <div class="ord-header">
+            <div class="ord-num">1</div>
+            <div class="ord-header-text">
+              <div class="ord-scope">기초단체</div>
+              <div class="ord-title">갈등유발예상시설 사전고지 조례</div>
+            </div>
+            <span class="ord-arrow">›</span>
+          </div>
+          <div class="ord-body"><div class="ord-body-inner">
+            <div class="ord-situation"><strong>지금은 이렇습니다.</strong> 우리 동네에 폐기물 소각장이나 매립장이 들어서는 인허가 신청이 접수돼도, 주민에게 알릴 의무가 없습니다. 업체는 몰래 토지주와 계약하고, 관청은 조용히 허가를 처리합니다. 공사 소음이 들려서야 뭔가 생긴다는 걸 아는 경우가 허다합니다.</div>
+            <div class="ord-solution">
+              <div class="ord-solution-title">조례가 생기면 달라집니다</div>
+              <div class="ord-solution-item">인허가 신청이 접수되면 7일 안에 반드시 주민에게 알려야 합니다</div>
+              <div class="ord-solution-item">문자·서면·홈페이지를 동시에 활용해 놓치지 않도록 합니다</div>
+              <div class="ord-solution-item">시설 반경 2km 안의 마을 전체가 고지 대상입니다</div>
+              <div class="ord-solution-item">규모를 확대하는 변경 인허가도 다시 알려야 합니다</div>
+            </div>
+            <div class="ord-effect"><span class="ord-effect-icon">💡</span>주민이 미리 알아야 의견도 내고, 문제가 있으면 막을 수 있습니다. 공사가 시작된 뒤엔 되돌리기가 훨씬 어렵습니다.</div>
+          </div></div>
+        </div>
+
+        <div class="ord-card c-basic" onclick="toggle(this)">
+          <div class="ord-header">
+            <div class="ord-num">2</div>
+            <div class="ord-header-text">
+              <div class="ord-scope">기초단체</div>
+              <div class="ord-title">시·군·구 환경정책위원회 조례</div>
+            </div>
+            <span class="ord-arrow">›</span>
+          </div>
+          <div class="ord-body"><div class="ord-body-inner">
+            <div class="ord-situation"><strong>지금은 이렇습니다.</strong> 소각장·매립장 허가는 담당 공무원 한두 명이 서류만 보고 결정합니다. 환경에 어떤 영향을 미치는지, 주민 생활에 문제가 없는지 전문적으로 따져보는 절차가 없습니다. "규정에 맞으면 허가"가 전부입니다.</div>
+            <div class="ord-solution">
+              <div class="ord-solution-title">조례가 생기면 달라집니다</div>
+              <div class="ord-solution-item">소각·매립·재활용시설은 허가 전 환경정책위원회의 전문 심의를 반드시 거쳐야 합니다</div>
+              <div class="ord-solution-item">위원회는 환경 전문가·시민단체·주민 추천 위원이 함께 참여합니다</div>
+              <div class="ord-solution-item">자치단체장 혼자 좌우하지 못하도록 공동위원장 체제로 운영합니다</div>
+            </div>
+            <div class="ord-effect"><span class="ord-effect-icon">💡</span>서류 검토만으로 통과되던 허가에 환경 전문가의 눈이 더해집니다. "일단 허가하고 보는" 관행을 막을 수 있습니다.</div>
+          </div></div>
+        </div>
+
+        <div class="ord-card c-basic" onclick="toggle(this)">
+          <div class="ord-header">
+            <div class="ord-num">3</div>
+            <div class="ord-header-text">
+              <div class="ord-scope">기초단체</div>
+              <div class="ord-title">환경피해 예비조사 지원 조례</div>
+            </div>
+            <span class="ord-arrow">›</span>
+          </div>
+          <div class="ord-body"><div class="ord-body-inner">
+            <div class="ord-situation"><strong>지금은 이렇습니다.</strong> 공장 옆 동네에서 주민이 암에 걸려도, "환경오염 때문"이라는 걸 주민이 직접 증명해야 합니다. 오염 측정 장비도, 의학 지식도, 법률 지식도 없는 주민이 대기업·행정을 상대로 피해를 입증하는 것은 거의 불가능합니다.</div>
+            <div class="ord-solution">
+              <div class="ord-solution-title">조례가 생기면 달라집니다</div>
+              <div class="ord-solution-item">지자체가 직접 나서서 오염 실태 조사와 건강검진을 실시합니다</div>
+              <div class="ord-solution-item">암 등 질병 위험이 높은 주민에게는 정기 건강검진을 지원합니다</div>
+              <div class="ord-solution-item">환경분쟁 조정 신청 등 법적 절차도 행정·재정적으로 도와줍니다</div>
+            </div>
+            <div class="ord-effect"><span class="ord-effect-icon">💡</span>피해 입증의 부담이 주민 개인에서 지자체로 옮겨옵니다. 홀로 싸우지 않아도 됩니다.</div>
+          </div></div>
+        </div>
+
+        <div class="ord-card c-basic" onclick="toggle(this)">
+          <div class="ord-header">
+            <div class="ord-num">4</div>
+            <div class="ord-header-text">
+              <div class="ord-scope">기초단체</div>
+              <div class="ord-title">도시(군)계획조례 — 이격거리 기준</div>
+            </div>
+            <span class="ord-arrow">›</span>
+          </div>
+          <div class="ord-body"><div class="ord-body-inner">
+            <div class="ord-situation"><strong>지금은 이렇습니다.</strong> 폐기물 재활용시설은 아파트 바로 옆에도 들어설 수 있습니다. 법에 이격거리 기준이 없거나 너무 느슨하기 때문입니다. 지자체마다 기준이 달라, 어떤 곳은 학교 500m 앞에도 허가가 납니다.</div>
+            <div class="ord-solution">
+              <div class="ord-solution-title">조례가 생기면 달라집니다</div>
+              <div class="ord-solution-item">10가구 이상 주거지역에서 2km 안에는 폐기물시설을 지을 수 없습니다</div>
+              <div class="ord-solution-item">학교·노인시설·문화시설 경계에서도 2km 안은 금지입니다</div>
+              <div class="ord-solution-item">강·저수지·왕복 2차로 이상 도로 근처 2km 이내도 마찬가지입니다</div>
+            </div>
+            <div class="ord-effect"><span class="ord-effect-icon">💡</span>지도에 선 하나 그어서, 우리 동네에 쓰레기 시설이 들어오지 못하게 막을 수 있습니다.</div>
+          </div></div>
+        </div>
+
+        <div class="ord-card c-wide" onclick="toggle(this)">
+          <div class="ord-header">
+            <div class="ord-num">5</div>
+            <div class="ord-header-text">
+              <div class="ord-scope">광역단체</div>
+              <div class="ord-title">환경영향평가 조례</div>
+            </div>
+            <span class="ord-arrow">›</span>
+          </div>
+          <div class="ord-body"><div class="ord-body-inner">
+            <div class="ord-situation"><strong>지금은 이렇습니다.</strong> 법에 따르면 하루 100톤 이상 소각장만 환경영향평가를 받아야 합니다. 그래서 업체들은 일부러 하루 99톤짜리 소각장을 짓습니다. 평가를 피하면 환경에 어떤 영향을 미치는지 제대로 검토하지 않아도 됩니다. 플라스틱을 태우는 고형연료(SRF) 시설은 "재활용"으로 분류돼 아예 평가 대상에서 빠져 있습니다.</div>
+            <div class="ord-solution">
+              <div class="ord-solution-title">조례가 생기면 달라집니다</div>
+              <div class="ord-solution-item">하루 20톤 이상 소각시설부터 환경영향평가를 받아야 합니다</div>
+              <div class="ord-solution-item">SRF 발전소·폐플라스틱 재활용시설도 평가 대상에 포함됩니다</div>
+              <div class="ord-solution-item">매립시설도 기준을 낮춰 더 많은 시설이 평가를 받도록 합니다</div>
+              <div class="ord-solution-item">평가 과정의 자료와 결과를 주민이 직접 확인할 수 있습니다</div>
+            </div>
+            <div class="ord-effect"><span class="ord-effect-icon">💡</span>"99톤 꼼수"가 통하지 않게 됩니다. 더 많은 시설이 제대로 된 환경 검증을 받게 됩니다.</div>
+          </div></div>
+        </div>
+
+        <div class="ord-card c-share" onclick="toggle(this)">
+          <div class="ord-header">
+            <div class="ord-num">6</div>
+            <div class="ord-header-text">
+              <div class="ord-scope">기초·광역 공통</div>
+              <div class="ord-title">위원회 회의 및 회의록 공개 조례</div>
+            </div>
+            <span class="ord-arrow">›</span>
+          </div>
+          <div class="ord-body"><div class="ord-body-inner">
+            <div class="ord-situation"><strong>지금은 이렇습니다.</strong> 개발 허가를 결정하는 도시계획위원회·환경위원회 회의는 대부분 비공개입니다. 어떤 위원이 어떤 이유로 찬성했는지, 어떤 조건이 붙었는지 주민은 알 수 없습니다. 회의록도 수개월이 지나야 볼 수 있거나, 청구해도 "비공개"로 거절당합니다.</div>
+            <div class="ord-solution">
+              <div class="ord-solution-title">조례가 생기면 달라집니다</div>
+              <div class="ord-solution-item">모든 위원회 회의는 원칙적으로 공개합니다. 비공개는 예외적 사유가 있을 때만 허용됩니다</div>
+              <div class="ord-solution-item">회의 7일 전에 안건과 일정을 홈페이지에 먼저 공개합니다</div>
+              <div class="ord-solution-item">회의가 끝나면 7일 안에 회의록을 공개합니다</div>
+              <div class="ord-solution-item">공개 규정을 어기면 해당 회의의 결정 자체가 무효가 됩니다</div>
+            </div>
+            <div class="ord-effect"><span class="ord-effect-icon">💡</span>밀실 행정이 사라집니다. 위원들이 어떤 결정을 했는지 주민이 직접 확인하고 따질 수 있습니다.</div>
+          </div></div>
+        </div>
+
+        <div class="ord-card c-share" onclick="toggle(this)">
+          <div class="ord-header">
+            <div class="ord-num">7</div>
+            <div class="ord-header-text">
+              <div class="ord-scope">기초·광역 공통</div>
+              <div class="ord-title">개발관련 위원회 주민참가 조례</div>
+            </div>
+            <span class="ord-arrow">›</span>
+          </div>
+          <div class="ord-body"><div class="ord-body-inner">
+            <div class="ord-situation"><strong>지금은 이렇습니다.</strong> 소각장 허가를 심의하는 위원회에서, 사업자는 "사업 설명"을 이유로 직접 들어가 발언할 수 있습니다. 하지만 그 소각장 옆에 사는 주민은 회의실에 들어가지도 못합니다. 의견을 낼 기회 자체가 없습니다.</div>
+            <div class="ord-solution">
+              <div class="ord-solution-title">조례가 생기면 달라집니다</div>
+              <div class="ord-solution-item">직접적인 이해관계가 있는 주민은 위원회 회의 참가와 발언을 신청할 수 있습니다</div>
+              <div class="ord-solution-item">주민이 제출한 의견은 반드시 회의록에 기록되고 심의에 반영됩니다</div>
+              <div class="ord-solution-item">심의자료를 회의 5일 전에 미리 공개해, 주민이 준비하고 참여할 수 있게 합니다</div>
+            </div>
+            <div class="ord-effect"><span class="ord-effect-icon">💡</span>사업자만 발언하던 자리에 주민의 목소리가 공식적으로 들어갑니다. 당사자가 배제된 결정은 없어집니다.</div>
+          </div></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 활동 경과 -->
+  <section class="section">
+    <div class="container">
+      <div class="section-label">활동 경과</div>
+      <div class="section-title">지방선거를 향한 발걸음</div>
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-dot done"></div>
+          <div class="tl-date">3월 24일</div>
+          <div class="tl-text">여야 정당 대상 공약 채택 촉구 기자회견</div>
+          <div class="tl-region">지방선거 D-71</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot done"></div>
+          <div class="tl-date">4월 3일</div>
+          <div class="tl-text">전북지역 7대 조례 공약 채택 촉구 기자회견 및 토론회</div>
+          <div class="tl-region">전북환경운동연합 주관</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot done"></div>
+          <div class="tl-date">4월 22일</div>
+          <div class="tl-text">울산지역 시민사회 공약제안서 발표</div>
+          <div class="tl-region">울산시민연대·울산환경운동연합 주관</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot done"></div>
+          <div class="tl-date">4월 30일</div>
+          <div class="tl-text">후보자·캠프 대상 온라인 정책설명회</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot done"></div>
+          <div class="tl-date">5월 6일</div>
+          <div class="tl-text">경북지역 공약채택 촉구 기자회견</div>
+          <div class="tl-region">안동환경운동연합 주관</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-date">5월 중</div>
+          <div class="tl-text">청주·충북지역 설명회 예정</div>
+          <div class="tl-region">청주충북환경운동연합 추진</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 운동본부 구성 -->
+  <section class="section">
+    <div class="container">
+      <div class="section-label">운동본부 구성</div>
+      <div class="section-title">함께하는 단체들</div>
+      <div class="org-box">
+        <div class="org-role">주관 (4개 단체)</div>
+        <div class="org-names">공익법률센터 농본 · 참여자치지역운동연대 · 투명사회를 위한 정보공개센터 · 환경운동연합</div>
+      </div>
+      <p class="members-label">참여단체 (80개, 2026년 4월 30일 기준)</p>
+      <div class="tag-cloud">
+        <span class="tag">강남서초환경운동연합</span><span class="tag">강동송파환경운동연합</span><span class="tag">강서양천환경운동연합</span><span class="tag">경기중북부환경운동연합</span><span class="tag">경기환경운동연합</span><span class="tag">경주환경운동연합</span><span class="tag">고양환경운동연합</span><span class="tag">고흥보성환경운동연합</span><span class="tag">공익법률센터농본</span><span class="tag">광양환경운동연합</span><span class="tag">광주환경운동연합</span><span class="tag">군산환경운동연합</span><span class="tag">김해환경운동연합</span><span class="tag">당진환경운동연합</span><span class="tag">대구참여연대</span><span class="tag">대구환경운동연합</span><span class="tag">대전참여자치시민연대</span><span class="tag">대전환경운동연합</span><span class="tag">마창진참여자치시민연대</span><span class="tag">마산창원진해환경운동연합</span><span class="tag">목포환경운동연합</span><span class="tag">민주사회를위한변호사모임 환경보건위원회</span><span class="tag">부산참여연대</span><span class="tag">부산환경운동연합</span><span class="tag">사천환경운동연합</span><span class="tag">서산태안환경운동연합</span><span class="tag">서울환경연합</span><span class="tag">성남참여자치시민연대</span><span class="tag">성남환경운동연합</span><span class="tag">세종참여자치시민연대</span><span class="tag">세종환경운동연합</span><span class="tag">속초고성양양환경운동연합</span><span class="tag">수원환경운동연합</span><span class="tag">순천환경운동연합</span><span class="tag">시민환경연구소</span><span class="tag">시흥환경운동연합</span><span class="tag">안동환경운동연합</span><span class="tag">안산환경운동연합</span><span class="tag">안양군포의왕환경운동연합</span><span class="tag">양산환경운동연합</span><span class="tag">여수시민협</span><span class="tag">여수환경운동연합</span><span class="tag">여주환경운동연합</span><span class="tag">예산홍성환경운동연합</span><span class="tag">오산환경운동연합</span><span class="tag">울산시민연대</span><span class="tag">울산환경운동연합</span><span class="tag">원주환경운동연합</span><span class="tag">이천환경운동연합</span><span class="tag">익산참여연대</span><span class="tag">익산환경운동연합</span><span class="tag">인천평화복지연대</span><span class="tag">인천환경운동연합</span><span class="tag">장흥환경운동연합</span><span class="tag">전북환경운동연합</span><span class="tag">제주참여환경연대</span><span class="tag">제주환경운동연합</span><span class="tag">제천환경운동연합</span><span class="tag">진주환경운동연합</span><span class="tag">참여연대</span><span class="tag">참여와자치를위한춘천시민연대</span><span class="tag">참여자치21(광주)</span><span class="tag">참여자치전북시민연대</span><span class="tag">참여자치지역운동연대</span><span class="tag">창녕환경운동연합</span><span class="tag">천안아산환경운동연합</span><span class="tag">청주충북환경운동연합</span><span class="tag">춘천환경운동연합</span><span class="tag">충남참여자치지역운동연대</span><span class="tag">충남환경운동연합</span><span class="tag">충북참여자치시민연대</span><span class="tag">통영거제환경운동연합</span><span class="tag">투명사회를위한정보공개센터</span><span class="tag">파주환경운동연합</span><span class="tag">포항환경운동연합</span><span class="tag">환경법률센터</span><span class="tag">환경운동연합</span><span class="tag">화성환경운동연합</span><span class="tag">횡성환경운동연합</span><span class="tag">가평구리남양주양평환경운동연합(준)</span>
+      </div>
+
+      <div class="cta-box">
+        <h3>조례 문의 및 정책 협약</h3>
+        <p>후보자·캠프가 정책 협약을 원하시거나<br>조례 내용 문의가 있으시면 연락주세요.</p>
+        <div class="cta-contacts">
+          <div class="cta-contact">
+            <span class="cta-contact-icon">✉️</span>
+            <div>
+              <strong>기초·광역 조례 문의</strong> — 공익법률센터 농본<br>
+              <span>nongbon.office@gmail.com</span>
+            </div>
+          </div>
+          <div class="cta-contact">
+            <span class="cta-contact-icon">✉️</span>
+            <div>
+              <strong>위원회 공개·참여 조례 문의</strong> — 투명사회를위한정보공개센터<br>
+              <span>cfoi@opengirok.or.kr</span>
+            </div>
+          </div>
+          <div class="cta-contact">
+            <span class="cta-contact-icon">✉️</span>
+            <div>
+              <strong>운동본부 전체 문의</strong> — 환경운동연합<br>
+              <span>web@kfem.or.kr</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    난개발·환경오염 방지 및 주민알권리 조례 운동본부<br>
+    주관: 공익법률센터 농본 · 참여자치지역운동연대 · 투명사회를위한정보공개센터 · 환경운동연합
+  </div>
+</footer>
+
+<script>
+  function toggle(card) {
+    const wasExpanded = card.classList.contains('expanded');
+    document.querySelectorAll('.ord-card.expanded').forEach(c => c.classList.remove('expanded'));
+    if (!wasExpanded) card.classList.add('expanded');
+  }
+
+  (function () {
+    const election = new Date('2026-06-03');
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    election.setHours(0, 0, 0, 0);
+    const diff = Math.round((election - today) / (1000 * 60 * 60 * 24));
+    const el = document.getElementById('dday');
+    const lb = document.getElementById('dday-label');
+    if (diff > 0) { el.textContent = 'D-' + diff; lb.textContent = '지방선거까지'; }
+    else if (diff === 0) { el.textContent = 'D-Day'; lb.textContent = '오늘이 선거일!'; }
+    else { el.textContent = 'D+' + Math.abs(diff); lb.textContent = '선거 후 경과일'; }
+  })();
+</script>
+
+</body>
+</html>
