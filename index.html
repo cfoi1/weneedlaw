@@ -407,6 +407,42 @@
     .cta-contact span { color: rgba(255,255,255,0.55); font-size: 12px; }
 
     /* ── FOOTER ── */
+    /* ── ORDINANCE PHASE ── */
+    .ord-phase {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0.5rem 0 0.25rem;
+      margin-top: 0.5rem;
+    }
+    .ord-phase:first-child { margin-top: 0; }
+    .ord-phase-num {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: var(--green-mid);
+      background: var(--green-light);
+      padding: 3px 8px;
+      border-radius: 20px;
+      flex-shrink: 0;
+    }
+    .ord-phase-label {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-secondary);
+    }
+    .ord-phase::after {
+      content: '';
+      flex: 1;
+      height: 0.5px;
+      background: var(--border);
+    }
+    .ord-num-plain {
+      background: var(--bg-secondary);
+      color: var(--text-secondary);
+      border: 0.5px solid var(--border);
+    }
+
     /* ── PLEDGE ── */
     .pledge-empty {
       border: 1.5px dashed var(--border);
@@ -462,7 +498,7 @@
   <div class="container hero-inner">
     <div class="hero-badge">2026 지방선거 정책 캠페인</div>
     <h1>난개발·환경오염 방지 및<br>주민알권리 조례 운동본부</h1>
-    <p class="hero-sub">농촌을 도시의 쓰레기장으로 만드는 난개발에 맞서,<br>지역 주민의 알권리와 참여권을 조례로 보장합니다.</p>
+    <p class="hero-sub">농촌을 도시의 쓰레기장으로 만드는 '깜깜이 개발'에 맞서,<br>지역 주민의 알권리와 참여권을 조례로 보장합니다.</p>
     <div class="hero-stats">
       <div class="hero-stat">
         <span class="num">80+</span>
@@ -520,11 +556,16 @@
 
       <div class="ordinance-grid">
 
-        <div class="ord-card c-basic" onclick="toggle(this)">
+        <!-- 단계 1: 사전고지 -->
+        <div class="ord-phase">
+          <span class="ord-phase-num">STEP 1</span>
+          <span class="ord-phase-label">사전 고지</span>
+        </div>
+
+        <div class="ord-card" onclick="toggle(this)">
           <div class="ord-header">
-            <div class="ord-num">1</div>
+            <div class="ord-num ord-num-plain">1</div>
             <div class="ord-header-text">
-              <div class="ord-scope">기초단체</div>
               <div class="ord-title">갈등유발예상시설 사전고지 조례</div>
             </div>
             <span class="ord-arrow">›</span>
@@ -535,19 +576,24 @@
               <div class="ord-solution-title">조례가 생기면 달라집니다</div>
               <div class="ord-solution-item">인허가 신청이 접수되면 7일 안에 반드시 주민에게 알려야 합니다</div>
               <div class="ord-solution-item">문자·서면·홈페이지를 동시에 활용해 놓치지 않도록 합니다</div>
-              <div class="ord-solution-item">시설 반경 2km 안의 마을 전체가 고지 대상입니다</div>
+              <div class="ord-solution-item">시설 반경 2km 안의 읍·면·동, 그리고 3호 이상 주택이 있는 마을이 고지 대상입니다</div>
               <div class="ord-solution-item">규모를 확대하는 변경 인허가도 다시 알려야 합니다</div>
             </div>
             <div class="ord-effect"><span class="ord-effect-icon">💡</span>주민이 미리 알아야 의견도 내고, 문제가 있으면 막을 수 있습니다. 공사가 시작된 뒤엔 되돌리기가 훨씬 어렵습니다.</div>
           </div></div>
         </div>
 
-        <div class="ord-card c-basic" onclick="toggle(this)">
+        <!-- 단계 2: 사전 심의 강화 -->
+        <div class="ord-phase">
+          <span class="ord-phase-num">STEP 2</span>
+          <span class="ord-phase-label">사전 심의 강화</span>
+        </div>
+
+        <div class="ord-card" onclick="toggle(this)">
           <div class="ord-header">
-            <div class="ord-num">2</div>
+            <div class="ord-num ord-num-plain">2</div>
             <div class="ord-header-text">
-              <div class="ord-scope">기초단체</div>
-              <div class="ord-title">시·군·구 환경정책위원회 조례</div>
+              <div class="ord-title">환경정책위원회 조례</div>
             </div>
             <span class="ord-arrow">›</span>
           </div>
@@ -563,53 +609,10 @@
           </div></div>
         </div>
 
-        <div class="ord-card c-basic" onclick="toggle(this)">
+        <div class="ord-card" onclick="toggle(this)">
           <div class="ord-header">
-            <div class="ord-num">3</div>
+            <div class="ord-num ord-num-plain">3</div>
             <div class="ord-header-text">
-              <div class="ord-scope">기초단체</div>
-              <div class="ord-title">환경피해 예비조사 지원 조례</div>
-            </div>
-            <span class="ord-arrow">›</span>
-          </div>
-          <div class="ord-body"><div class="ord-body-inner">
-            <div class="ord-situation"><strong>지금은 이렇습니다.</strong> 공장 옆 동네에서 주민이 암에 걸려도, "환경오염 때문"이라는 걸 주민이 직접 증명해야 합니다. 오염 측정 장비도, 의학 지식도, 법률 지식도 없는 주민이 대기업·행정을 상대로 피해를 입증하는 것은 거의 불가능합니다.</div>
-            <div class="ord-solution">
-              <div class="ord-solution-title">조례가 생기면 달라집니다</div>
-              <div class="ord-solution-item">지자체가 직접 나서서 오염 실태 조사와 건강검진을 실시합니다</div>
-              <div class="ord-solution-item">암 등 질병 위험이 높은 주민에게는 정기 건강검진을 지원합니다</div>
-              <div class="ord-solution-item">환경분쟁 조정 신청 등 법적 절차도 행정·재정적으로 도와줍니다</div>
-            </div>
-            <div class="ord-effect"><span class="ord-effect-icon">💡</span>피해 입증의 부담이 주민 개인에서 지자체로 옮겨옵니다. 홀로 싸우지 않아도 됩니다.</div>
-          </div></div>
-        </div>
-
-        <div class="ord-card c-basic" onclick="toggle(this)">
-          <div class="ord-header">
-            <div class="ord-num">4</div>
-            <div class="ord-header-text">
-              <div class="ord-scope">기초단체</div>
-              <div class="ord-title">도시(군)계획조례 — 이격거리 기준</div>
-            </div>
-            <span class="ord-arrow">›</span>
-          </div>
-          <div class="ord-body"><div class="ord-body-inner">
-            <div class="ord-situation"><strong>지금은 이렇습니다.</strong> 폐기물 재활용시설은 아파트 바로 옆에도 들어설 수 있습니다. 법에 이격거리 기준이 없거나 너무 느슨하기 때문입니다. 지자체마다 기준이 달라, 어떤 곳은 학교 500m 앞에도 허가가 납니다.</div>
-            <div class="ord-solution">
-              <div class="ord-solution-title">조례가 생기면 달라집니다</div>
-              <div class="ord-solution-item">10가구 이상 주거지역에서 2km 안에는 폐기물시설을 지을 수 없습니다</div>
-              <div class="ord-solution-item">학교·노인시설·문화시설 경계에서도 2km 안은 금지입니다</div>
-              <div class="ord-solution-item">강·저수지·왕복 2차로 이상 도로 근처 2km 이내도 마찬가지입니다</div>
-            </div>
-            <div class="ord-effect"><span class="ord-effect-icon">💡</span>지도에 선 하나 그어서, 우리 동네에 쓰레기 시설이 들어오지 못하게 막을 수 있습니다.</div>
-          </div></div>
-        </div>
-
-        <div class="ord-card c-wide" onclick="toggle(this)">
-          <div class="ord-header">
-            <div class="ord-num">5</div>
-            <div class="ord-header-text">
-              <div class="ord-scope">광역단체</div>
               <div class="ord-title">환경영향평가 조례</div>
             </div>
             <span class="ord-arrow">›</span>
@@ -618,7 +621,7 @@
             <div class="ord-situation"><strong>지금은 이렇습니다.</strong> 법에 따르면 하루 100톤 이상 소각장만 환경영향평가를 받아야 합니다. 그래서 업체들은 일부러 하루 99톤짜리 소각장을 짓습니다. 평가를 피하면 환경에 어떤 영향을 미치는지 제대로 검토하지 않아도 됩니다. 플라스틱을 태우는 고형연료(SRF) 시설은 "재활용"으로 분류돼 아예 평가 대상에서 빠져 있습니다.</div>
             <div class="ord-solution">
               <div class="ord-solution-title">조례가 생기면 달라집니다</div>
-              <div class="ord-solution-item">하루 20톤 이상 소각시설부터 환경영향평가를 받아야 합니다</div>
+              <div class="ord-solution-item">소각시설은 법령 기준(100톤/일)의 절반인 50톤 이상부터 환경영향평가를 받아야 합니다. 광역단체장이 환경부와 협의하면 더 낮출 수도 있습니다</div>
               <div class="ord-solution-item">SRF 발전소·폐플라스틱 재활용시설도 평가 대상에 포함됩니다</div>
               <div class="ord-solution-item">매립시설도 기준을 낮춰 더 많은 시설이 평가를 받도록 합니다</div>
               <div class="ord-solution-item">평가 과정의 자료와 결과를 주민이 직접 확인할 수 있습니다</div>
@@ -627,11 +630,41 @@
           </div></div>
         </div>
 
-        <div class="ord-card c-share" onclick="toggle(this)">
+        <div class="ord-card" onclick="toggle(this)">
           <div class="ord-header">
-            <div class="ord-num">6</div>
+            <div class="ord-num ord-num-plain">4</div>
             <div class="ord-header-text">
-              <div class="ord-scope">기초·광역 공통</div>
+              <div class="ord-title">도시(군)계획조례 — 이격거리 기준</div>
+            </div>
+            <span class="ord-arrow">›</span>
+          </div>
+          <div class="ord-body"><div class="ord-body-inner">
+            <div class="ord-situation"><strong>지금은 이렇습니다.</strong> 폐기물 재활용시설은 아파트 바로 옆에도 들어설 수 있습니다. 법에 이격거리 기준이 없거나 너무 느슨하기 때문입니다. 지자체마다 기준이 달라, 어떤 곳은 학교 500m 앞에도 허가가 납니다. 특히 산업폐기물 매립장이나 대형 소각장 같은 '도시계획시설'은 기초단체 조례만으로는 규제할 수 없어, 광역단체 조례로 별도로 막아야 합니다.</div>
+            <div class="ord-solution">
+              <div class="ord-solution-title">기초단체 조례 — 개발행위허가 대상 시설</div>
+              <div class="ord-solution-item">재활용시설·소규모 폐기물시설은 주택 10호 이상 지역에서 2km 안에 지을 수 없습니다 (서산시 기준)</div>
+              <div class="ord-solution-item">학교·노인시설·문화시설 경계에서도 2km 안은 금지입니다</div>
+              <div class="ord-solution-item">강·저수지·왕복 2차로 이상 도로 근처 2km 이내도 마찬가지입니다</div>
+            </div>
+            <div class="ord-solution" style="margin-top:0.5rem">
+              <div class="ord-solution-title">광역단체 조례 — 도시계획시설(매립장·대형 소각장 등)</div>
+              <div class="ord-solution-item">산업폐기물 매립장·1일 100톤 이상 소각장 등 도시계획시설도 같은 이격거리 기준을 적용합니다</div>
+              <div class="ord-solution-item">기초단체 조례의 사각지대를 광역 차원에서 보완합니다</div>
+            </div>
+            <div class="ord-effect"><span class="ord-effect-icon">💡</span>기초와 광역이 함께 촘촘하게 막아야 합니다. 기초단체 조례만으로는 대형 폐기물시설을 막을 수 없기 때문입니다.</div>
+          </div></div>
+        </div>
+
+        <!-- 단계 3: 위원회 공개 및 참여 보장 -->
+        <div class="ord-phase">
+          <span class="ord-phase-num">STEP 3</span>
+          <span class="ord-phase-label">위원회 공개 및 참여 보장</span>
+        </div>
+
+        <div class="ord-card" onclick="toggle(this)">
+          <div class="ord-header">
+            <div class="ord-num ord-num-plain">5</div>
+            <div class="ord-header-text">
               <div class="ord-title">위원회 회의 및 회의록 공개 조례</div>
             </div>
             <span class="ord-arrow">›</span>
@@ -649,11 +682,10 @@
           </div></div>
         </div>
 
-        <div class="ord-card c-share" onclick="toggle(this)">
+        <div class="ord-card" onclick="toggle(this)">
           <div class="ord-header">
-            <div class="ord-num">7</div>
+            <div class="ord-num ord-num-plain">6</div>
             <div class="ord-header-text">
-              <div class="ord-scope">기초·광역 공통</div>
               <div class="ord-title">개발관련 위원회 주민참가 조례</div>
             </div>
             <span class="ord-arrow">›</span>
@@ -667,6 +699,32 @@
               <div class="ord-solution-item">심의자료를 회의 5일 전에 미리 공개해, 주민이 준비하고 참여할 수 있게 합니다</div>
             </div>
             <div class="ord-effect"><span class="ord-effect-icon">💡</span>사업자만 발언하던 자리에 주민의 목소리가 공식적으로 들어갑니다. 당사자가 배제된 결정은 없어집니다.</div>
+          </div></div>
+        </div>
+
+        <!-- 단계 4: 피해 구제 -->
+        <div class="ord-phase">
+          <span class="ord-phase-num">STEP 4</span>
+          <span class="ord-phase-label">피해 구제</span>
+        </div>
+
+        <div class="ord-card" onclick="toggle(this)">
+          <div class="ord-header">
+            <div class="ord-num ord-num-plain">7</div>
+            <div class="ord-header-text">
+              <div class="ord-title">환경피해 예비조사 지원 조례</div>
+            </div>
+            <span class="ord-arrow">›</span>
+          </div>
+          <div class="ord-body"><div class="ord-body-inner">
+            <div class="ord-situation"><strong>지금은 이렇습니다.</strong> 공장 옆 동네에서 주민이 암에 걸려도, "환경오염 때문"이라는 걸 주민이 직접 증명해야 합니다. 오염 측정 장비도, 의학 지식도, 법률 지식도 없는 주민이 대기업·행정을 상대로 피해를 입증하는 것은 거의 불가능합니다.</div>
+            <div class="ord-solution">
+              <div class="ord-solution-title">조례가 생기면 달라집니다</div>
+              <div class="ord-solution-item">지자체가 직접 나서서 오염 실태 조사와 건강검진을 실시합니다</div>
+              <div class="ord-solution-item">암 등 질병 위험이 높은 주민에게는 정기 건강검진을 지원합니다</div>
+              <div class="ord-solution-item">환경분쟁 조정 신청 등 법적 절차도 행정·재정적으로 도와줍니다</div>
+            </div>
+            <div class="ord-effect"><span class="ord-effect-icon">💡</span>피해 입증의 부담이 주민 개인에서 지자체로 옮겨옵니다. 홀로 싸우지 않아도 됩니다.</div>
           </div></div>
         </div>
 
@@ -753,7 +811,7 @@
           <div class="cta-contact">
             <span class="cta-contact-icon">✉️</span>
             <div>
-              <strong>기초·광역 조례 문의</strong> — 공익법률센터 농본<br>
+              <strong>사전고지·사전심의·피해구제 조례 문의</strong> — 공익법률센터 농본<br>
               <span>nongbon.office@gmail.com</span>
             </div>
           </div>
