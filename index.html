@@ -406,7 +406,6 @@
     .cta-contact strong { color: white; font-weight: 500; }
     .cta-contact span { color: rgba(255,255,255,0.55); font-size: 12px; }
 
-    /* ── FOOTER ── */
     /* ── ORDINANCE PHASE ── */
     .ord-phase {
       display: flex;
@@ -444,14 +443,15 @@
     }
 
     /* ── PLEDGE ── */
-    .pledge-empty {
-      border: 1.5px dashed var(--border);
-      border-radius: var(--radius-lg);
-      padding: 2.5rem 1.5rem;
-      text-align: center;
+    .pledge-section-label {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--text-tertiary);
+      letter-spacing: 0.08em;
+      margin: 1.5rem 0 0.625rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 0.5px solid var(--border);
     }
-    .pledge-empty-icon { font-size: 2rem; margin-bottom: 0.75rem; }
-    .pledge-empty-text { font-size: 13.5px; color: var(--text-tertiary); line-height: 1.8; }
 
     .pledge-grid { display: grid; gap: 0.75rem; }
     .pledge-card {
@@ -556,7 +556,6 @@
 
       <div class="ordinance-grid">
 
-        <!-- 단계 1: 사전고지 -->
         <div class="ord-phase">
           <span class="ord-phase-num">STEP 1</span>
           <span class="ord-phase-label">사전 고지</span>
@@ -583,7 +582,6 @@
           </div></div>
         </div>
 
-        <!-- 단계 2: 사전 심의 강화 -->
         <div class="ord-phase">
           <span class="ord-phase-num">STEP 2</span>
           <span class="ord-phase-label">사전 심의 강화</span>
@@ -655,7 +653,6 @@
           </div></div>
         </div>
 
-        <!-- 단계 3: 위원회 공개 및 참여 보장 -->
         <div class="ord-phase">
           <span class="ord-phase-num">STEP 3</span>
           <span class="ord-phase-label">위원회 공개 및 참여 보장</span>
@@ -702,7 +699,6 @@
           </div></div>
         </div>
 
-        <!-- 단계 4: 피해 구제 -->
         <div class="ord-phase">
           <span class="ord-phase-num">STEP 4</span>
           <span class="ord-phase-label">피해 구제</span>
@@ -738,6 +734,9 @@
       <div class="section-label">정책협약</div>
       <div class="section-title">함께 약속한 정당과 후보자들</div>
       <p style="font-size:13.5px; color:var(--text-secondary); line-height:1.8; margin-bottom:1.25rem;">7대 조례 제·개정을 공식 공약으로 채택한 정당과 후보자입니다.<br>협약이 체결되는 대로 이곳에 추가됩니다.</p>
+
+      <!-- 정당 -->
+      <div class="pledge-section-label">정당</div>
       <div class="pledge-grid">
         <div class="pledge-card">
           <span class="pledge-badge party">정당</span>
@@ -746,28 +745,97 @@
             <div class="pledge-detail">2026년 5월 11일 협약 체결 · <a href="https://cfoi.or.kr/19418" target="_blank" style="color:var(--green-mid); text-decoration:underline; text-underline-offset:2px;">보도자료 보기</a></div>
           </div>
         </div>
-         <div class="pledge-card">
+        <div class="pledge-card">
           <span class="pledge-badge party">정당</span>
           <div class="pledge-info">
             <div class="pledge-name">진보당</div>
             <div class="pledge-detail">2026년 5월 12일 협약 체결 · <a href="https://cfoi.or.kr/19428" target="_blank" style="color:var(--green-mid); text-decoration:underline; text-underline-offset:2px;">보도자료 보기</a></div>
           </div>
         </div>
-         <div class="pledge-card">
+        <div class="pledge-card">
           <span class="pledge-badge party">정당</span>
           <div class="pledge-info">
             <div class="pledge-name">기본소득당</div>
             <div class="pledge-detail">2026년 5월 12일 협약 체결 · <a href="https://cfoi.or.kr/19430" target="_blank" style="color:var(--green-mid); text-decoration:underline; text-underline-offset:2px;">보도자료 보기</a></div>
           </div>
-        </div>        
-         <div class="pledge-card">
+        </div>
+        <div class="pledge-card">
           <span class="pledge-badge party">정당</span>
           <div class="pledge-info">
             <div class="pledge-name">녹색당</div>
             <div class="pledge-detail">2026년 5월 14일 협약 체결 · <a href="https://docs.google.com/document/d/1nEIQkjtlcMfLe1NPaI-F0tSSdg29tEBC2u_ibK0n5X4/edit?tab=t.0" target="_blank" style="color:var(--green-mid); text-decoration:underline; text-underline-offset:2px;">보도자료 보기</a></div>
           </div>
-        </div> 
+        </div>
       </div>
+
+      <!-- 후보자 -->
+      <div class="pledge-section-label">후보자</div>
+      <div class="pledge-grid">
+        <div class="pledge-card">
+          <span class="pledge-badge candidate">후보자</span>
+          <div class="pledge-info">
+            <div class="pledge-name">김순애</div>
+            <div class="pledge-detail">녹색당 · 제주도 도의회의원(비례)</div>
+          </div>
+        </div>
+        <div class="pledge-card">
+          <span class="pledge-badge candidate">후보자</span>
+          <div class="pledge-info">
+            <div class="pledge-name">이장우</div>
+            <div class="pledge-detail">노동당 · 울산광역시 동구 구청장</div>
+          </div>
+        </div>
+        <div class="pledge-card">
+          <span class="pledge-badge candidate">후보자</span>
+          <div class="pledge-info">
+            <div class="pledge-name">송윤섭</div>
+            <div class="pledge-detail">진보당 · 충청북도 옥천군 군의회의원</div>
+          </div>
+        </div>
+        <div class="pledge-card">
+          <span class="pledge-badge candidate">후보자</span>
+          <div class="pledge-info">
+            <div class="pledge-name">홍희진</div>
+            <div class="pledge-detail">진보당 · 서울특별시 성북구 구청장</div>
+          </div>
+        </div>
+        <div class="pledge-card">
+          <span class="pledge-badge candidate">후보자</span>
+          <div class="pledge-info">
+            <div class="pledge-name">구백림</div>
+            <div class="pledge-detail">더불어민주당 · 대구광역시 달서구 구의회의원</div>
+          </div>
+        </div>
+        <div class="pledge-card">
+          <span class="pledge-badge candidate">후보자</span>
+          <div class="pledge-info">
+            <div class="pledge-name">김민환</div>
+            <div class="pledge-detail">더불어민주당 · 대구광역시 달서구 구의회의원</div>
+          </div>
+        </div>
+        <div class="pledge-card">
+          <span class="pledge-badge candidate">후보자</span>
+          <div class="pledge-info">
+            <div class="pledge-name">이신자</div>
+            <div class="pledge-detail">더불어민주당 · 대구광역시 달서구 구의회의원</div>
+          </div>
+        </div>
+        <div class="pledge-card">
+          <span class="pledge-badge candidate">후보자</span>
+          <div class="pledge-info">
+            <div class="pledge-name">백경해</div>
+            <div class="pledge-detail">더불어민주당 · 대구광역시 달서구 구의회의원</div>
+          </div>
+        </div>
+        <div class="pledge-card">
+          <span class="pledge-badge candidate">후보자</span>
+          <div class="pledge-info">
+            <div class="pledge-name">유선경</div>
+            <div class="pledge-detail">더불어민주당 · 대구광역시 달서구 구의회의원</div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -833,12 +901,12 @@
           <div class="tl-dot done"></div>
           <div class="tl-date">5월 12일</div>
           <div class="tl-text">진보당·기본소득당과 정책협약식 진행</div>
-        </div>        
-       <div class="tl-item">
+        </div>
+        <div class="tl-item">
           <div class="tl-dot done"></div>
           <div class="tl-date">5월 14일</div>
           <div class="tl-text">녹색당과 정책협약식 진행</div>
-        </div>        
+        </div>
         <div class="tl-item">
           <div class="tl-dot"></div>
           <div class="tl-date">5월 중</div>
